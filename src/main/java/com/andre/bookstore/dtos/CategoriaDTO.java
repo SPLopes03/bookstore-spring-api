@@ -1,13 +1,20 @@
 package com.andre.bookstore.dtos;
 
 import com.andre.bookstore.domain.Categoria;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 public class CategoriaDTO implements Serializable {
 
     private Integer id;
+    @NotEmpty(message = "Nome requerido")
+    @Length(min = 3, max = 100, message = "Nome deve ter entre 3 e 100 caracteres")
     private String nome;
+
+    @NotEmpty(message = "Descrição requerido")
+    @Length(min = 3, max = 200, message = "Descrição deve ter entre 3 e 200 caracteres")
     private String descricao;
 
     public CategoriaDTO() { }
